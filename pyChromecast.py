@@ -100,6 +100,8 @@ def home():
 
 if __name__ == '__main__':
     movie_directory = './uploaded_movies'
+    port = int(os.environ.get('PORT', 8000))
     os.makedirs(movie_directory, exist_ok=True)
 
-    app.run(host="0.0.0.0", port=8000, debug=False)
+    app.run(host="0.0.0.0", port=port, debug=False)
+
