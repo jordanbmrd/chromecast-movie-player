@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chromecast Movie</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        #dropzone {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            height: 200px;
+            border: 4px dashed #333;
+            background-color: #fff;
+            color: #333;
+            font-size: 24px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="dropzone">
+        Drop movie file here
+    </div>
+    <script>
+        const dropzone = document.getElementById('dropzone');
+        const chromecastName = 'Salon';
+
+        dropzone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+        });
+
+        dropzone.addEventListener('drop', async (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const movieFile = e.dataTransfer.files[0];
+            if (!movieFile) {
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('movie', movieFile);
+
+            try {
+                const response = await fetch(`/cast_movie?chromecast_name=${chromecastName}`, {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to cast movie');
+                }
+
+                alert('Movie is being cast');
+            } catch (error) {
+                alert(`Error: ${error.message}`);
+            }
+        });
+    </script>
+</body>
+</html>
