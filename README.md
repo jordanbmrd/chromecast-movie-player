@@ -2,8 +2,6 @@
 
 Chromecast Movie Streamer is a simple web application that allows you to cast local movie files to your Google Chromecast device. Just drag and drop a movie file onto the web page, and it will be streamed to your Chromecast. The application supports various video formats and also provides basic playback controls.
 
-![Chromecast Movie Streamer Screenshot](screenshot.png)
-
 ## Features
 
 - Drag and drop movie files
