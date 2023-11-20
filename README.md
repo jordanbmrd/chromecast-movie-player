@@ -60,7 +60,3 @@ The list of supported formats depends on the installed version of FFmpeg.
 ## Contributing
 
 If you'd like to contribute to the project, please create a fork and submit a pull request with your changes.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
